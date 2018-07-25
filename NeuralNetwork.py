@@ -27,7 +27,7 @@ def sigmoid_derivative(x):
 
 class Network:
     def __init__(self,num_inputs=10,num_outputs=2,hidden_layers=[15,10]): #each element in array is the number of nodes in a hidden layer
-        self.layers=[]                       #holds the weight and bias matrices of each later
+        self.layers=[]                       #holds the weight and bias matrices of each layer
         self.num_outputs=num_outputs
         self.num_inputs=num_inputs
         first_layer_weights=np.random.normal(0,1,size=[hidden_layers[0],num_inputs])   #initialize wieghts with random numbers

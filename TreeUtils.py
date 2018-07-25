@@ -28,6 +28,35 @@ def mutual_information(inputs,outputs,cut):
     delta_entropy=H_output-H_smaller-H_larger
     return delta_entropy
 
+
+def feature_information(feature,outputs): #maximize mutual information in one feature
+    max_entropy=0
+    boundary=0
+    #try to cut on each value in feature
+    for cut in feature:
+        delta_entropy=mutual_information(feature,outputs,cut)
+        if(delta_entropy>max_entropy):
+            max_entropy=delta_entropy
+            boundary=cut
+            
+    return(boundary,max_entropy)
+                
+#linear search through all of the data to  find the cut that maximizes mutual information
+#i wonder if you can binary search here
+def max_information(inputs,outputs):
+    max_feature_cut=0
+    max_feature_information=0
+    max_feature=0
+    #find which feature gives us the best discrimination power
+    for indx,feature in enumerate(inputs.T):
+        cut,information=feature_information(feature,outputs)
+        if(information>max_feature_information):
+            max_feature_information=information
+            max_feature_cut=cut
+            max_feature=indx
+
+    return (max_feature_cut,max_feature)
+
 '''
 Functions For Weighted Trees for Boosting
 '''

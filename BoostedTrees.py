@@ -15,8 +15,9 @@ from sklearn.ensemble import AdaBoostClassifier as ABoost
 #each data point is given a weight w(i)= w(i) * exp(total_weight * terror)
 #weights are initialized to 1/n
 #the assumption is that data is binary (1 or -1)
-#doesn't really work for multiclass data :(
+#doesn't really work for multiclass data 
 #use the data for survival rate for surgery for lung cancer (did/din't survive 1y)
+#warning: this data is super depressing
 
 class AdaBoost:
     def __init__(self,classifiers):
